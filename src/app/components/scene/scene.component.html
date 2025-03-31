@@ -1,4 +1,15 @@
 @for (item of steps(); track $index) {
-    <h2>{{item.title}}</h2>
-    <p>{{item.description}}</p>
+    @if ($index == 0) {
+        <div class="card d-flex justify-content-center row">
+            <div class="bg" [style]="{'background-color': item.bgcolor}"><img class="image" [src]="item.img" alt='Title'></div>
+            <h1 class="title">{{item.title}}</h1>
+            <p class="description">{{item.description}}</p>
+            <div class="button" id="button"><img class="arrow" src="/button-right.svg" /></div>
+            <div class="positions">
+                <div class="rectangle" id="rectangle1"></div>
+                <div class="rectangle-2" id="rectangle2"></div>
+                <div class="rectangle-2" id="rectangle3"></div>
+            </div>
+        </div>
+    }
 }
