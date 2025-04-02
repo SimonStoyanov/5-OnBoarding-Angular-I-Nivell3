@@ -10,9 +10,10 @@
     box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.25);
     margin-top: 30px;
     aspect-ratio: 1 / 2;
+    overflow: hidden;
 }
 
-.card .bg {
+.slider .bg {
     position: absolute;
     width: 300px;
     height: 350px;
@@ -22,7 +23,7 @@
     background-color: #4da2a9;
 }
 
-.card .image {
+.slider .image {
     position: absolute;
     width: 282px;
     height: 204px;
@@ -31,7 +32,7 @@
     object-fit: cover;
 }
 
-.card .title {
+.slider .title {
     position: absolute;
     top: 376px;
     left: 20px;
@@ -41,11 +42,16 @@
     font-size: 14px;
 }
 
-.card .description {
+.container {
     position: absolute;
-    width: 255px;
     top: 404px;
-    left: 20px;
+    left: 8px;
+    width: 258px;
+}
+
+.container .description {
+    position: absolute;
+    width: 258px;
     font-family: "Inter-Regular", Helvetica;
     font-weight: 400;
     color: #4d4d4d;
@@ -59,6 +65,7 @@
     height: 46px;
     top: 513px;
     left: 229px;
+    overflow: hidden;
 }
 
 .card .button-l {
@@ -68,6 +75,7 @@
     height: 46px;
     top: 513px;
     left: 178px;
+    overflow: hidden;
 }
 
 #button-next {
@@ -87,7 +95,7 @@
     left: 20px;
 }
 
-.card .rectangle {
+.positions .rectangle {
     position: relative;
     width: 22px;
     height: 8px;
@@ -96,7 +104,7 @@
     transition: all 0.3s ease;
   }
   
-.card .dot {
+.positions .dot {
     position: relative;
     width: 8px;
     height: 8px;

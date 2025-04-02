@@ -1,26 +1,28 @@
 <div class="card d-flex justify-content-center row">
-@for (item of steps(); track $index) {
-    @if ($index == currentStep) {
-        <div class="bg" [style]="{'background-color': item.bgcolor}"><img class="image" [src]="item.img" alt='Title'></div>
-        <h1 class="title">{{item.title}}</h1>
-        <p class="description">{{item.description}}</p>
-            @if ($index === 0) {
-                <button class="button-r" id="button-next" (click)="changeSlide(1)"></button>
-            } @else if ($index === steps().length -1) {
-                <button class="button-r" id="button-prev" (click)="changeSlide(-1)"></button>
-            } @else {
-                <button class="button-r" id="button-next" (click)="changeSlide(1)"></button>
-                <button class="button-l" id="button-prev" (click)="changeSlide(-1)"></button>
+    <div class="slider" [@animSlider]="currentStep">
+        @for (item of steps(); track $index) {
+            @if ($index == currentStep) {
+                <div class="bg" [style]="{'background-color': item.bgcolor}"><img class="image" [src]="item.img" alt='Title'></div>
+                <h1 class="title">{{item.title}}</h1>
+                <div class="container"><p class="description">{{item.description}}</p></div>
             }
-        <div class="positions">
-            @for ($n of steps(); track $index) {
-                <button 
-                    [class]="{'rectangle': $index === currentStep, 'dot': $index !== currentStep}"
-                    [attr.id]="'rectangle-' + $index"
-                    (click)="changeSlide($index - currentStep)">
-                </button>
-            }
-        </div>
+        }
+    </div>
+    <div class="positions">
+        @for ($n of steps(); track $index) {
+            <button 
+                [class]="{'rectangle': $index === currentStep, 'dot': $index !== currentStep}"
+                [attr.id]="'rectangle-' + $index"
+                (click)="changeSlide($index - currentStep)">
+            </button>
+        }
+    </div>
+    @if (currentStep === 0) {
+        <button class="button-r" id="button-next" (click)="changeSlide(1)"></button>
+    } @else if (currentStep === steps().length -1) {
+        <button class="button-r" id="button-prev" (click)="changeSlide(-1)"></button>
+    } @else {
+        <button class="button-r" id="button-next" (click)="changeSlide(1)"></button>
+        <button class="button-l" id="button-prev" (click)="changeSlide(-1)"></button>
     }
-}
 </div>
