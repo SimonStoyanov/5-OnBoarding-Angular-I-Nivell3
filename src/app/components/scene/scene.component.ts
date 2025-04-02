@@ -9,4 +9,9 @@ import { IStep } from '../../interfaces/i-step';
 })
 export class SceneComponent {
   public steps: InputSignal<IStep[]> = input.required<IStep[]>();
+  public currentStep: number = 0;
+
+  changeSlide(arg0: number) {
+    this.currentStep += arg0;
+  }
 }

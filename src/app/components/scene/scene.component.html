@@ -1,15 +1,25 @@
+<div class="card d-flex justify-content-center row">
 @for (item of steps(); track $index) {
-    @if ($index == 0) {
-        <div class="card d-flex justify-content-center row">
-            <div class="bg" [style]="{'background-color': item.bgcolor}"><img class="image" [src]="item.img" alt='Title'></div>
-            <h1 class="title">{{item.title}}</h1>
-            <p class="description">{{item.description}}</p>
-            <div class="button" id="button"><img class="arrow" src="/button-right.svg" /></div>
-            <div class="positions">
-                <div class="rectangle" id="rectangle1"></div>
-                <div class="rectangle-2" id="rectangle2"></div>
-                <div class="rectangle-2" id="rectangle3"></div>
-            </div>
+    @if ($index == currentStep) {
+        <div class="bg" [style]="{'background-color': item.bgcolor}"><img class="image" [src]="item.img" alt='Title'></div>
+        <h1 class="title">{{item.title}}</h1>
+        <p class="description">{{item.description}}</p>
+            @if ($index === 0) {
+                <button class="button-r" id="button-next" (click)="changeSlide(1)"></button>
+            } @else if ($index === steps().length -1) {
+                <button class="button-r" id="button-prev" (click)="changeSlide(-1)"></button>
+            } @else {
+                <button class="button-r" id="button-next" (click)="changeSlide(1)"></button>
+                <button class="button-l" id="button-prev" (click)="changeSlide(-1)"></button>
+            }
+        <div class="positions">
+            @for ($n of steps(); track $index) {
+                <div 
+                    [class]="{'rectangle': $index === currentStep, 'dot': $index !== currentStep}"
+                    [attr.id]="'rectangle-' + $index">
+                </div>
+            }
         </div>
     }
 }
+</div>
