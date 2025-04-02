@@ -14,10 +14,11 @@
             }
         <div class="positions">
             @for ($n of steps(); track $index) {
-                <div 
+                <button 
                     [class]="{'rectangle': $index === currentStep, 'dot': $index !== currentStep}"
-                    [attr.id]="'rectangle-' + $index">
-                </div>
+                    [attr.id]="'rectangle-' + $index"
+                    (click)="changeSlide($index - currentStep)">
+                </button>
             }
         </div>
     }
